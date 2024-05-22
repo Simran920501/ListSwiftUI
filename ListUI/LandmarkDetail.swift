@@ -9,36 +9,34 @@ import SwiftUI
 
 struct LandmarkDetail: View {
     var landmark: Landmark
+    //MARK: -
     var body: some View {
-        VStack {
-            MapView()
-                .frame(height: 300)
-            CircleImage(img: landmark.image)
-                .offset(y: -130)
-                .padding(.bottom, -130)
-
-
-            VStack(alignment: .leading) {
-                Text(landmark.name)
-                    .font(.title)
-
-
-                HStack {
-                    Text(landmark.park)
-                    Spacer()
-                    Text(landmark.state)
+        ScrollView{
+            VStack {
+                MapView()
+                    .frame(width: 400, height: 200)
+                CircleImage(img: landmark.image)
+                    .offset(y: -130)
+                    .padding(.bottom, -130)
+                VStack(alignment: .leading) {
+                    Text(landmark.name)
+                        .font(.title)
+                    
+                    
+                    HStack {
+                        Text(landmark.park)
+                        Spacer()
+                        Text(landmark.state)
+                    }
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    Divider()
+                    Text("About \(landmark.name)")
+                        .font(.title)
+                    Text(landmark.description)
                 }
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-
-                Text("About \(landmark.name)")
-                    .font(.title2)
-                Text(landmark.description)
+                .padding()
             }
-            .padding()
-
-
-            Spacer()
         }
     }
 }
